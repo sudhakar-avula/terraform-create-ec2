@@ -59,20 +59,18 @@ pipeline {
                     }
                echo "Apply end"
             }
-        }
-
-        post {
-            always {
-                //Cleanup the Terraform plan file
-                sh "rm -f tfplan"
-            }
-            success {
-                echo "Terraform deployment successful!"
-            }
-            failure {
-                echo "Terraform deployment failed!"
-            }
         } 
      }
-
+        post {
+        always {
+            //Cleanup the Terraform plan file
+            sh "rm -f tfplan"
+        }
+        success {
+            echo "Terraform deployment successful!"
+        }
+        failure {
+            echo "Terraform deployment failed!"
+        }
+    }
   }
